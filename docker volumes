@@ -26,7 +26,7 @@ create a docker server.
           volume1 is you chocice you can take any name
   -->now dockerfile is completed
           when dockerfile is done we can to build
-          command is docker build -t siva:v1
+          command is docker build -t siva:v1 .
           now you can create container.
           command is docker run -it --name cont1 siva:v1
           now it goes insde container.
