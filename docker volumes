@@ -1,0 +1,44 @@
+steps:
+create a docker server.
+  and install (docker) yum install docker -y
+  start docker deamon command is 
+  systemctl start docker
+  systemctl status docker
+  --> now we can do docker volumes.
+  what is docker volume?
+  --> it is used to store data inside container
+  --> volume is a simple directory inside container
+  -->container uses host resources like (cpu,ram,rom)
+  -->single volume can be shared to multiple containers
+  at a time we can share single volume to single container.
+  every volume will store under
+  /var/lib/docker/volumes
+  -->to create docker volume we have n number of methods
+  1.Dockerfile
+  2.FROM CLI
+  3.VOLUME MOUNTING
+  process:
+  Now create a dockerfile.
+  command is vim Dockerfile
+  after you write inside docker file
+  FROM ubuntu
+  VOLUME ["/volume1]
+          volume1 is you chocice you can take any name
+  -->now dockerfile is completed
+          when dockerfile is done we can to build
+          command is docker build -t siva:v1
+          now you can create container.
+          command is docker run -it --name cont1 siva:v1
+          now it goes insde container.
+          give ls it shows volumes is volume1
+          i am going volume1-->cd volume1
+          crating files touch file{1..5}
+          now files in inside cotainer.
+-->Now i want to share volume1 to cont2
+          create a contaoner
+          command is docker run -it --name cont2 --volumes-from cont1 ubuntu
+          now give ls there is volume1
+          go inside volume1 cd volume1
+          then give ll
+          what ever cont1 data the coming to cont2
+-->if i am modifing data cont2 then it will replicas to cont1 because the volume is same
